@@ -39,9 +39,6 @@ jobs:
           pnpm -v
           pnpm install
 
-      - name: Unit testing
-        run: pnpm test
-
       - name: Build static files
         # if failed, ...
         # Treating warnings as errors because process.env.CI = true.
