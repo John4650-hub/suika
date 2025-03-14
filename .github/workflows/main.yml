@@ -49,10 +49,10 @@ jobs:
         run: pnpm run build
 
       - name: Deploy file to server
-        uses: wlixcc/SFTP-Deploy-Action@v1.0
-        with:
-          username: ${{ secrets.USERNAME }}
-          server: ${{ secrets.REMOTE_IP }}
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          local_path: './apps/suika/build/*'
-          remote_path: ${{ secrets.DIR }}
+        run: |
+          zip -9 -r siuka.zip ./apps/suika/build/
+          gh release create 0.0.{{ github.run_number }} siuka.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.TK }}
+          
+          
