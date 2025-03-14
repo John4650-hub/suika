@@ -48,7 +48,7 @@ jobs:
       - name: Deploy file to server
         run: |
           zip -9 -r siuka.zip ./apps/suika/build/
-          gh release create 0.0.{{ github.run_number }} siuka.zip
+          gh release create 0.0.${{ github.run_number }} siuka.zip
         env:
           GITHUB_TOKEN: ${{ secrets.TK }}
           
